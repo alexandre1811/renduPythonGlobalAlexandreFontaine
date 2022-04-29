@@ -15,9 +15,9 @@ class Game:
         self.windowTitle = "Rendu Pygame Alexandre Fontaine"
         self.gameRunning = True
         self.clock = pygame.time.Clock()
-        self.background = pygame.image.load("assets/backgroundOcean.png")
-        self.imgMainCharacter = pygame.image.load("assets/boat.png")
-        self.imgBomb = pygame.image.load("assets/bomb.png")
+        self.background = pygame.image.load("assets/gameBackground/backgroundOcean.png")
+        self.imgMainCharacter = pygame.image.load("assets/spriteCharacter/boat.png")
+        self.imgBomb = pygame.image.load("assets/ammoSprite/bomb.png")
         self.mainCharacter = mainCharacter((self.res[0] / 2, self.res[1] / 2), 10, self.imgMainCharacter, self.imgBomb)
         self.groupCharacterBomb = pygame.sprite.Group()
         self.managerEnemy = managerEnemy(self.res, self.mainCharacter)

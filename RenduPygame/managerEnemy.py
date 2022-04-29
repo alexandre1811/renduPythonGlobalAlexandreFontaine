@@ -7,9 +7,9 @@ class managerEnemy:
     def __init__(self, resolution, mainCharacter):
         self.groupSprite = pygame.sprite.Group()
         self.bombGroup = pygame.sprite.Group()
-        self.bombImg = pygame.image.load("assets/bomb.png")
-        self.firstEnemy = pygame.image.load("assets/enemy/enemy.png")
-        self.secondEnemy = pygame.image.load("assets/enemy/enemy2.png")
+        self.bombImg = pygame.image.load("assets/ammoSprite/bomb.png")
+        self.firstEnemy = pygame.image.load("assets/spriteEnemy/enemy.png")
+        self.secondEnemy = pygame.image.load("assets/spriteEnemy/enemy2.png")
         self.listEnemy = [self.firstEnemy, self.secondEnemy]
         self.resolution = resolution
         self.mainCharacter = mainCharacter
