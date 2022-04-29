@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZEBY</title>
+    <style>
+        body{
+            background: #003e7d;
+        }
+        .buttonmenu{
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            border:1px solid #003e7d ;
+            background: white;
+            transition: 500ms;
+            text-decoration: none;
+            color: #4b4b4b;
+        }
+        .buttonmenu:hover{
+            border:1px solid white ;
+            background: #003e7d;
+            color: white;
+            transition: 500ms;
+        }
+        .text{
+            color: white;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+<a class="buttonmenu" href="/admin">Admin</a>
+<a class="buttonmenu" href="/chat">Chat Room</a>
+<a class="buttonmenu" href="/create">Create</a>
+<a class="buttonmenu" href="/update">Update</a>
+<a class="buttonmenu" href="/delete">Delete</a>
+{% if questions %}
+    <h2 style="color: white">Liste des Questions</h2>
+<nav>
+    <ul>
+        {% for question in questions %}
+            <li class="text">{{ question.text }}</li>
+        {% endfor %}
+</ul>
+</nav>
+{% else %}
+<h2 style="color: white">Il n'y a pas de Questions</h2>
+{% endif %}
+</body>
+</html>

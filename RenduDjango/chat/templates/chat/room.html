@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Salle de Texte</title>
+    <style>
+        .bgbody{
+            background: #003e7d;
+        }
+        .container{
+            background: white;
+            margin: auto;
+            width: 60rem;
+            text-align: center;
+            justify-items: center;
+            padding: 1.5rem;
+        }
+        .inputsubmit{
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            border:1px solid #003e7d ;
+            background: white;
+            transition: 500ms;
+        }
+        .inputsubmit:hover{
+            border:1px solid white ;
+            background: #003e7d;
+            color: white;
+            scale: 120%;
+            transition: 500ms;
+        }
+        .inputtext{
+            margin: 1.5rem 0;
+            outline: none;
+            padding: 5px 2px;
+            border: none;
+            border-bottom: 2px solid #003e7d;
+            font-size: 1.1rem;
+        }
+        .textareaStyle{
+            resize: none;
+            border: none;
+            outline: none;
+            background: #eaeaea;
+            border-bottom: 2px solid #003e7d;
+        }
+    </style>
+</head>
+<body class="bgbody">
+    <div class="container">
+        <h2>Vous êtes dans une Chambre de Chat</h2>
+        <textarea class="textareaStyle" id="chat-log" cols="100" rows="10"></textarea>
+        <br/>
+        <input class="inputtext" id="chat-message-input" type="text" size="50" placeholder="Entre ton Message Ici">
+        <br/>
+        <input class="inputsubmit" id="chat-message-submit" type="button" value="Envoyer Mon Message">
+    </div>
+    {{ room_name|json_script:"room-name" }}
+    <script>
+        const roomName = JSON.parse(document.getElementById('room-name').textContent);
+
+        const chatSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/chat/'
+            + roomName
+            + '/'
+        );
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            document.querySelector('#chat-log').value += (data.message + '\n');
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+        document.querySelector('#chat-message-input').focus();
+        document.querySelector('#chat-message-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#chat-message-submit').click();
+            }
+        };
+
+        document.querySelector('#chat-message-submit').onclick = function(e) {
+            const messageInputDom = document.querySelector('#chat-message-input');
+            const message = messageInputDom.value;
+            chatSocket.send(JSON.stringify({
+                'message': message
+            }));
+            messageInputDom.value = '';
+        };
+    </script>
+</body>
+</html>

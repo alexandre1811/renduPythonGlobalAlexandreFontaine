@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8"/>
+    <title>Choix Salle de Chat</title>
+    <style>
+        .container{
+            background: white;
+            width: 25rem;
+            margin: auto;
+            text-align: center;
+            align-content: center;
+            padding: 1.8rem;
+            display: block;
+        }
+        .inputtext{
+            margin: 1.5rem 0;
+            outline: none;
+            padding: 5px 2px;
+            border: none;
+            border-bottom: 2px solid #003e7d;
+            font-size: 1.1rem;
+        }
+        .bgbody{
+            background: #003e7d;
+
+        }
+        .inputsubmit{
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            border:1px solid #003e7d ;
+            background: white;
+            transition: 500ms;
+        }
+        .inputsubmit:hover{
+            border:1px solid white ;
+            background: #003e7d;
+            color: white;
+            scale: 120%;
+            transition: 500ms;
+
+        }
+        .buttonmenu{
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            border:1px solid #003e7d ;
+            background: white;
+            transition: 500ms;
+            text-decoration: none;
+            color: #4b4b4b;
+        }
+        .buttonmenu:hover{
+            border:1px solid white ;
+            background: #003e7d;
+            color: white;
+            transition: 500ms;
+        }
+    </style>
+</head>
+<body class="bgbody">
+<a class="buttonmenu" href="/admin">Admin</a>
+<a class="buttonmenu" href="/crud">CRUD</a>
+<div class="container">
+    <h2>Dans quelle salle de chat voullez vous allez?</h2>
+    <input class="inputtext" id="room-name-input" type="text" size="25">
+    <input class="inputsubmit" id="room-name-submit" type="button" value="Entrer dans la Salle">
+</div>
+    <script>
+        document.querySelector('#room-name-input').focus();
+        document.querySelector('#room-name-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            window.location.pathname = '/chat/' + roomName + '/';
+        };
+    </script>
+</body>
+</html>

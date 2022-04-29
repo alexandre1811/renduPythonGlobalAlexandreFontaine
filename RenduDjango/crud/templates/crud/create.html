@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>create</title>
+    <style>
+        body{
+            background: #003e7d;
+        }
+        .buttonmenu{
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            border:1px solid #003e7d ;
+            background: white;
+            transition: 500ms;
+            text-decoration: none;
+            color: #4b4b4b;
+        }
+        .buttonmenu:hover{
+            border:1px solid white ;
+            background: #003e7d;
+            color: white;
+            transition: 500ms;
+        }
+        .inputtext{
+            margin: 1.5rem 0;
+            outline: none;
+            padding: 5px 2px;
+            border: none;
+            border-bottom: 2px solid #003e7d;
+            font-size: 1.1rem;
+        }
+        .inputsubmit{
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            border:1px solid #003e7d ;
+            background: white;
+            transition: 500ms;
+        }
+        .inputsubmit:hover{
+            border:1px solid white ;
+            background: #003e7d;
+            color: white;
+            scale: 120%;
+            transition: 500ms;
+        }
+        .container{
+            background: white;
+            width: 25rem;
+            margin: auto;
+            text-align: center;
+            align-content: center;
+            padding: 1.8rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <a class="buttonmenu" href="/admin">Admin</a>
+    <a class="buttonmenu" href="/">Index</a>
+    <a class="buttonmenu" href="/update">Update</a>
+    <a class="buttonmenu" href="/delete">Delete</a>
+    <div class="container">
+        <h2>Créer une Nouvelle Question</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ formulaireCreate.as_p }}
+        <input class="inputsubmit" type="submit" value="Envoyer">
+    </form>
+    </div>
+
+</body>
+</html>
