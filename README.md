@@ -1,9 +1,9 @@
 # Rendu Python Alexandre Fontaine
 
 > ### **Route du Rendu Django** :
-- Pour acceder au CRUD l'URL de l'index est : /
-- Pour acceder au Chat avec le WebSocket l'URL est : /chat
-- Pour acceder au mode Admin vue en cours l'URL est : /admin
+- Pour acceder au CRUD l'URL de l'index est : ``` / ```
+- Pour acceder au Chat avec le WebSocket l'URL est : ``` /chat ```
+- Pour acceder au mode Admin vue en cours l'URL est : ``` /admin ```
 
 > ### **Ligne de commande pour le WebSockets de Django** :
 - Installer Channels pour Python ``` python3 -c 'import channels; print(channels.__version__)' ```
